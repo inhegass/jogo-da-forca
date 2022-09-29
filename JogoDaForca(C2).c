@@ -2,12 +2,27 @@
 #include <string.h>
 //biblioteca para pegar o strlen
 
+void abertura(){
+	printf("*********************\n");
+	printf("*   Jogo da Forca   *\n");
+	printf("*********************\n\n");
+}
+
+void chuta(char chutes[26],int tentativas){	
+	//fun√ß√£o
+	char chute;
+	printf("Qual letra?\n");
+	scanf(" %c", &chute);
+	// coloca o espa√ßo para ignorar o enter e n√£o considera-lo como char
+	chutes[tentativas] =  chute;
+}
+
 int main(){
 	char palavrasecreta[20];
-	//isso È um arrays que guarda muitas coisas
+	//isso √© um arrays que guarda muitas coisas
 	sprintf(palavrasecreta, "MELANCIA");
 	//sprintf imprime em um array
-	//ultimo caracter do array com spritf È sempre /0, por criar um loop, mas isso n muda o array em sÌ
+	//ultimo caracter do array com spritf √© sempre /0, por criar um loop, mas isso n muda o array em s√≠
 	
 	int acertou = 0;
 	int enforcou = 0 ;
@@ -15,6 +30,8 @@ int main(){
 	char chutes[26];
 	int tentativas = 0;
 		
+	abertura();
+	
 	do {		
 		for (int i = 0; i < strlen(palavrasecreta); i++){
 			//strlen mostra o tamanho do array ou string
@@ -34,15 +51,10 @@ int main(){
 		}
 		printf("\n");
 		
-		char chute;
-		printf("Qual letra?\n");
-		scanf(" %c", &chute);
-		// coloca o espaÁo para ignorar o enter e n„o considera-lo como char
-		
-		chutes[tentativas] = chute;
-		tentativas ++;		
+		chuta(chutes, tentativas);
+		tentativas ++;
 	} while (!acertou && !enforcou);
-	//executa uma vez mesmo que o programa ja tenha a funÁ„o falseada
-	//a "!" serve como negaÁ„o (0)
+	//executa uma vez mesmo que o programa ja tenha a fun√ß√£o falseada
+	//a "!" serve como nega√ß√£o (0)
 	//"&&" = "e"
 }
